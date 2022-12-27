@@ -12,13 +12,17 @@ bcrypt = Bcrypt(app)
 def index():
     return render_template('index.html')
 
-
-@app.route("/searching", methods=['POST'])
-def search():
-
-    # r = requests.get(f" https://api.edamam.com/auto-complete?app_id=0e94fdc3&app_key=7624707be5246cd1f379234f5c40c602&q=steak/")
-    return jsonify(r.json())
-
+# API Calls
+@app.route('/call_api', methods = ["POST"])
+def call_api():
+    
+    api_id = os.environ.get('API_ID')
+    api_key = os.environ.get('API_KEY')
+    ingr = request.form['foodSearch']
+    servings = request.form['amount']
+    
+    api_request = requests.get(f'https://api.edamam.com/api/food-database/v2/parser?app_id={api_id}&app_key={api_key}&ingr={ingr}%20{servings}&nutrition-type=logging')
+    return jsonify(api_request.json())
 
 #  ======== Login Section with validation ======
 

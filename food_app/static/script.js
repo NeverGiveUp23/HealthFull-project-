@@ -11,16 +11,27 @@
 //   var form = new FormData(searchForm);
 // console.log(searchForm)
 
-function search() {
-  let ingr = document.querySelector("#foodSearch");
-  let servings = document.querySelector('#servings');
-  // if(amount.value.length < 1){
-  fetch(`https://api.edamam.com/api/food-database/v2/parser?app_id=0e94fdc3&app_key=7624707be5246cd1f379234f5c40c602&ingr=${ingr.value}%20${servings.value}&nutrition-type=logging`)
+// calling the data from api
+function search(event){
+  event.preventDefault();
+  var searchForm = document.getElementById('searchForm');
+  var form = new FormData(searchForm);
 
-    .then(res => {
-      return res.json();
-    })
-    .then(data => {
+  fetch('http://127.0.0.1:5000/call_api', {method: 'POST', body: form})
+   .then(res => {
+    return res.json()
+  })
+   .then(data => {
+    searchData(data);
+})
+.catch(err => {
+  console.log('something went wrong')
+  console.log(err)
+})
+}
+
+function searchData(data) {
+
 
       // setting result  for ID FOOD in HTML//
       var food = document.querySelector('#food')
@@ -73,14 +84,8 @@ function search() {
 
 
 
-    })
-    .catch(err => {
-      console.log('Error');
-      console.log(err);
-    })
+    }
 
-
-}
 
 
 // Notes
