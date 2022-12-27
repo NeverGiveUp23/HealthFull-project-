@@ -124,7 +124,7 @@ _Below is an example of how you can instruct your audience on installing and set
    ```sh
    pipenv install flask pymysql flask-bycript
    ```
-4. Enter your API in `script.js`
+4. Enter your API in `.env`
    ```js
    const API_KEY = 'ENTER YOUR API';
    ```
