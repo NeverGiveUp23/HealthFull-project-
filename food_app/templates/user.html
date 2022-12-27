@@ -1,112 +1,202 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Sono:wght@200&display=swap" rel="stylesheet">
-<!-- BOOTSTRAP -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-<!-- CSS -->
-<link rel="stylesheet" href="{{url_for('static', filename='dashboard.css')}}">
-  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Sono:wght@200&display=swap" rel="stylesheet">
+  <!-- BOOTSTRAP -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  <!-- CSS -->
+  <link rel="stylesheet" href="{{url_for('static', filename='dashboard.css')}}">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
   <title>HealthFULL</title>
 </head>
+
 <body>
 
 
 
-<!-- Nav BAR -->
-<div class="container">
-  <nav class="navbar navbar-dark bg-success fixed-top">
+  <!-- Nav BAR -->
+  <nav class="navbar navbar-expand-lg bg-success">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#"><img src="{{url_for('static', filename='/img/grocery.png')}}" alt="grocery image">HealthFull</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
+      <a class="navbar-brand" href="/">HealthFull</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
-        <div class="offcanvas-header">
-          <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">HealthFULL</h5>
-          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body">
-          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-            <li class="nav-item">
-              <a class="nav-link active btn btn-success " aria-current="page" href="/"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" class="bi bi-shop" viewBox="0 0 16 16">
-                <path d="M2.97 1.35A1 1 0 0 1 3.73 1h8.54a1 1 0 0 1 .76.35l2.609 3.044A1.5 1.5 0 0 1 16 5.37v.255a2.375 2.375 0 0 1-4.25 1.458A2.371 2.371 0 0 1 9.875 8 2.37 2.37 0 0 1 8 7.083 2.37 2.37 0 0 1 6.125 8a2.37 2.37 0 0 1-1.875-.917A2.375 2.375 0 0 1 0 5.625V5.37a1.5 1.5 0 0 1 .361-.976l2.61-3.045zm1.78 4.275a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 1 0 2.75 0V5.37a.5.5 0 0 0-.12-.325L12.27 2H3.73L1.12 5.045A.5.5 0 0 0 1 5.37v.255a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0zM1.5 8.5A.5.5 0 0 1 2 9v6h1v-5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v5h6V9a.5.5 0 0 1 1 0v6h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1V9a.5.5 0 0 1 .5-.5zM4 15h3v-5H4v5zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-3zm3 0h-2v3h2v-3z"/>
-              </svg>   Home</a>
-              <a class="nav-link active btn btn-danger" aria-current="page" href="/logout"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" class="bi bi-box-arrow-left" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z"/>
-                <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/>
-              </svg> Logout</a>
-            </li>
-          </ul>
-        </div>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          {% if 'user_id' in session %}
+          <li class="nav-item">
+            <a class="nav-link" href="/create/goal">Create Goal</a>
+          </li>
+          {% endif %}
+
+          {% if 'user_id' not in session %}
+          <li class="nav-item">
+            <a class="nav-link" href="/login/register">Login/Register</a>
+          </li>
+          {% endif %}
+
+          {% if 'user_id' in session %}
+          <li class="nav-item">
+            <a class="nav-link" href="/logout">Logout</a>
+          </li>
+          {% endif %}
+        </ul>
       </div>
     </div>
   </nav>
-
-</div>
-<!-- NAVBAR END -->
+  <!-- NAVBAR END -->
 
 
-<div class="container" id="mainHeading">
-  <h1 class="text-center">Welcome, {{session['first_name']}}</h1>
-</div>
+  <div class="container" id="mainHeading">
+    <h1 class="text-center">Welcome, {{session['first_name']}}</h1>
+  </div>
+
+  <div class="container">
+
+    <div  class="container">
 
 
+      <div id="myCharts" class="container">
 
-<div class="container">
-  <h2> Record Of All Your Saved Meals:</h2>
-</div>
-
-<div class="table-responsive-sm">
-  <table class="table table-success container">
-    <thead>
-      <tr>
-        <th>Select A Date</th>
-        <th>Label</th>
-        <th>Serving(s)</th>
-        <th>Calories(Kcal)</th>
-        <th>Protien(g)</th>
-        <th>Carbs(g)</th>
-        <th>Options</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for food in foods %}
-      <tr class="table-active ">
-        <td><a class="btn btn-warning" href="/sort_date/{{food.date}}">{{ food.date }}</a></td>
-        <th>{{ food.label }}</th>
-        <td>{{ food.servings }}</td>
-        <td>{{ food.calories }}</td>
-        <td>{{ food.protien }}</td>
-        <td>{{ food.carbs }}</td>
-        <td><a class="btn btn-danger" href='/user/delete/{{food.id}}'>Delete</a></td>
-      </tr>
-      {% endfor %}
-    </tbody>
-  </table>
-
-</div>
-<div class="row">
-
-  <a id="create" class=" nav-link active btn btn-info container " aria-current="page" href="/create/goal"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-clipboard-plus-fill" viewBox="0 0 16 16">
-    <path d="M6.5 0A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3Zm3 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3Z"/>
-    <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1A2.5 2.5 0 0 1 9.5 5h-3A2.5 2.5 0 0 1 4 2.5v-1Zm4.5 6V9H10a.5.5 0 0 1 0 1H8.5v1.5a.5.5 0 0 1-1 0V10H6a.5.5 0 0 1 0-1h1.5V7.5a.5.5 0 0 1 1 0Z"/>
-  </svg>  Create A Goal</a>
+      <div id="charts" class="container">
+        <div class="card">
+          <div class="card-body">
+            <canvas id="myChart2"></canvas>
   
-  <a id="create" class=" nav-link active btn btn-success container" aria-current="page" href="/"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-clipboard-plus-fill" viewBox="0 0 16 16">
-    <path d="M6.5 0A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3Zm3 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3Z"/>
-    <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1A2.5 2.5 0 0 1 9.5 5h-3A2.5 2.5 0 0 1 4 2.5v-1Zm4.5 6V9H10a.5.5 0 0 1 0 1H8.5v1.5a.5.5 0 0 1-1 0V10H6a.5.5 0 0 1 0-1h1.5V7.5a.5.5 0 0 1 1 0Z"/>
-  </svg> Add A Meal</a>
-</div>
+          </div>
+        </div>
+        
+      </div>
+      
+      
+      
+          <div id="charts2" class="container">
+            <div class="card">
+              <div class="card-body">
+                <canvas id="myChart3"></canvas>
+      
+              </div>
+            </div>
+          </div>
 
 
-<!-- BS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-<!-- JS -->
-  <script src="{{url_for('static', filename='script.js')}}"></script>
+    </div>
+
+
+
+    <div class="container">
+      <h2>All of your saved meals: </h2>
+    </div>
+    <div class="table-responsive-sm">
+      <table class="table table-success container">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Label</th>
+            <th>Serving(s)</th>
+            <th>Calories(Kcal)</th>
+            <th>Protien(g)</th>
+            <th>Carbs(g)</th>
+            <th>Options</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for food in foods %}
+          <tr class="table-active ">
+            <td>{{ food.date}}</td>
+            <th>{{ food.label }}</th>
+            <td>{{ food.servings }}</td>
+            <td>{{ food.calories }}</td>
+            <td>{{ food.protien }}</td>
+            <td>{{ food.carbs }}</td>
+            <td><a class="btn btn-danger" href='/user/delete/{{food.id}}'>Delete</a></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <div class=" d-flex justify-content-around bg-success p-2 text-dark bg-opacity-10 my-3">
+
+        {% for foods in food %}
+        <h5>Total Servings: <span id="groupServ">{{ foods.servings}}</span></h5>
+        <h5>Total Calories: <span id="groupCal">{{ foods.calories}}</span></h5>
+        <h5> Total Protien: <span id="groupPro">{{ foods.protien }}</span></h5>
+        <h5>Total Carbs: <span id="groupCarb">{{ foods.carbs }}</span></h5>
+        {% endfor %}
+      </div>
+
+    </div>
+
+    <div id="hidden" class="table-responsive-sm">
+      <!-- Display Hidden -->
+      <table class="table table-success container">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Calories(Kcal)</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for month in months %}
+          <tr class="table-active ">
+            <td><span class="monthDate">{{ month.month }}</span></td>
+            <td><span class="monthCal">{{ month.calories }}</span></td>
+            
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <!-- DIsplay Hidden -->
+      <div class=" d-flex justify-content-around bg-success p-2 text-dark bg-opacity-10 my-3">
+
+        {% for foods in food %}
+        <h5>Total Servings: <span id="groupServ">{{ foods.servings}}</span></h5>
+        <h5>Total Calories: <span id="groupCal">{{ foods.calories}}</span></h5>
+        <h5> Total Protien: <span id="groupPro">{{ foods.protien }}</span></h5>
+        <h5>Total Carbs: <span id="groupCarb">{{ foods.carbs }}</span></h5>
+        {% endfor %}
+      </div>
+
+    </div>
+
+
+    <div class="row">
+      <a id="create" class="btn btn-warning nav-link active container" href="/show/sort">View Meals By Date</a>
+
+      <a id="create" class=" nav-link active btn btn-info container " aria-current="page" href="/create/goal"><svg
+          xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+          class="bi bi-clipboard-plus-fill" viewBox="0 0 16 16">
+          <path
+            d="M6.5 0A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3Zm3 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3Z" />
+          <path
+            d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1A2.5 2.5 0 0 1 9.5 5h-3A2.5 2.5 0 0 1 4 2.5v-1Zm4.5 6V9H10a.5.5 0 0 1 0 1H8.5v1.5a.5.5 0 0 1-1 0V10H6a.5.5 0 0 1 0-1h1.5V7.5a.5.5 0 0 1 1 0Z" />
+        </svg> Create A Goal</a>
+
+      <a id="create" class=" nav-link active btn btn-success container" aria-current="page" href="/"><svg
+          xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+          class="bi bi-clipboard-plus-fill" viewBox="0 0 16 16">
+          <path
+            d="M6.5 0A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3Zm3 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3Z" />
+          <path
+            d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1A2.5 2.5 0 0 1 9.5 5h-3A2.5 2.5 0 0 1 4 2.5v-1Zm4.5 6V9H10a.5.5 0 0 1 0 1H8.5v1.5a.5.5 0 0 1-1 0V10H6a.5.5 0 0 1 0-1h1.5V7.5a.5.5 0 0 1 1 0Z" />
+        </svg> Add A Meal</a>
+    </div>
+  </div>
+
+
+  <!-- BS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+    crossorigin="anonymous"></script>
+  <!-- JS -->
+  <script src="{{url_for('static', filename='dashboardChart.js')}}"></script>
 </body>
+
 </html>

@@ -64,12 +64,16 @@ class Food:
     
   
   
-  
   @classmethod
   def destroy(cls,data):
     query = "DELETE FROM food WHERE id = %(id)s;"
     return connectToMySQL('healthfull').query_db(query,data)
   
+  
+  @classmethod
+  def destroyAll(cls,data):
+    query = "DELETE FROM healthfull.food WHERE date = %(date)s AND user_id = %(id)s;"
+    return connectToMySQL('healthfull').query_db(query,data)
   
   
   @classmethod
@@ -86,7 +90,6 @@ class Food:
   
   
   
-  
   @classmethod
   def get_date(cls, data):
     query = "SELECT * FROM food WHERE user_id = %(id)s AND date = %(date)s;"
@@ -97,6 +100,17 @@ class Food:
       foods.append(food)  
     return foods
   
+  # sum every data together to display for the user in a chart
+  @classmethod
+  def sum_total(cls,data):
+    query = " SELECT sum(calories) as calories,sum(servings) as servings, sum(carbs) as carbs, sum(protien) as protien FROM food WHERE user_id = %(id)s;"
+    results = connectToMySQL('healthfull').query_db(query, data)
+    return results
   
   
-  
+#  calories by month
+  @classmethod
+  def calorie_total_by_month(cls,data):
+    query = "SELECT MONTHNAME(date) AS month, SUM(calories) AS calories FROM food JOIN users on users.id = user_id WHERE user_id = %(id)s GROUP BY MONTHNAME(date);"
+    results = connectToMySQL('healthfull').query_db(query, data)
+    return results

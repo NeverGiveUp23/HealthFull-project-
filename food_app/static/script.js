@@ -4,8 +4,6 @@
 //   console.log(e.input.value)
 // })
 
-import API_KEY from "./apikey";
-
 
 // function search(e){
 //   e.preventDefault();
@@ -17,7 +15,7 @@ function search() {
   let ingr = document.querySelector("#foodSearch");
   let servings = document.querySelector('#servings');
   // if(amount.value.length < 1){
-  fetch(`https://api.edamam.com/api/food-database/v2/parser?app_id=${API_TOKEN}&app_key=${API_KEY}&ingr=${ingr.value}%20${servings.value}&nutrition-type=logging`)
+  fetch(`https://api.edamam.com/api/food-database/v2/parser?app_id=0e94fdc3&app_key=7624707be5246cd1f379234f5c40c602&ingr=${ingr.value}%20${servings.value}&nutrition-type=logging`)
 
     .then(res => {
       return res.json();
@@ -51,7 +49,7 @@ function search() {
       console.log(data)
       //========  END OF CALORIES DATA ===========
 
-      // SETTING PROTIEN IN THE API
+      // SETTING PROTIEN IN THE API==============
 
       const pro = Math.ceil(data.hints[0].food.nutrients.PROCNT);
 
@@ -61,7 +59,7 @@ function search() {
       protien.value = `${proPerServing}`
 
 
-
+// ============ Carb ================
       const carb = Math.floor(data.hints[0].food.nutrients.CHOCDF);
 
       let carbPerServing = carb * servings.value;
@@ -69,12 +67,9 @@ function search() {
       let carbs = document.querySelector('#carbs')
       carbs.value = `${carbPerServing}`
 
-
+// =========== date to string ==============
       const date = new Date();
       document.querySelector('#date').innerHTML = date.toDateString();
-
-
-
 
 
 
@@ -98,24 +93,55 @@ function removeShadow(element) {
 }
 
 
+// Chart Js ==========================
+const ctx = document.getElementById('myChart');
+
+// id for first chart in goal page
+let chartGoal = document.getElementById('goalCalChart');
+let currCal = document.getElementById('caloriesCountChart');
+let remCal = document.getElementById('remainingChart');
+let chartText = document.getElementById('textChart');
+let btnChart = document.getElementById('chartBtn');
 
 
-// let dayCal = document.querySelector('#dayCal');
-// let totCal = document.querySelector('#totCal');
-// let remCal = document.querySelector('#remCal');
 
-// let counter = 0
-// setInterval(() => {
-// if(counter === dayCal.innerHTML - totCal.innerHTML){
-//     clearInterval();
-//   }
-//   else if(){
 
-//   }
-//   else {
-//     counter++;
-//     remCal.innerHTML = counter;
-//   }
-// }, 20);
-// console.log(remCal)
+if(chartGoal.innerHTML == 0){
+  currCal.innerHTML = 0;
+  remCal.innerHTML = 0;
+  chartText.innerHTML = "Create A Goal"
+}else {
+  btnChart.remove()
+} 
 
+if(remCal.innerHTML < 0 ){
+  chartText.innerHTML = "Better Luck Next time"
+}
+
+
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ["Today's Goal", 'Current Calorie Count', 'Remaining Calories'],
+      datasets: [{
+        label: 'Goal Calorie Tracker',
+        labels: ["Today's Goal", 'Current Calorie Count', 'Remaining Calories'],
+        data: [chartGoal.innerHTML, currCal.innerHTML, remCal.innerHTML],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+
+
+
+
+
+// // ==============api key ================
+// let url = "https://api.edamam.com/api/food-database/v2/parser?app_id=YOUR_APP_ID&app_key=YOUR_APP_KEY&ingr=" + ingr.value + "%20" + servings.value + "&nutrition-type=logging";

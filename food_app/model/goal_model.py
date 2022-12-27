@@ -27,4 +27,7 @@ class Goal:
   def get_goal(cls, data):
       query = "SELECT calorie FROM goal JOIN users on users.id = user_id WHERE users.id = %(id)s AND date = %(date)s;"
       results = connectToMySQL('healthfull').query_db(query, data) 
-      return results[0]
+      try:
+        return results[0]
+      except IndexError: 
+        return None

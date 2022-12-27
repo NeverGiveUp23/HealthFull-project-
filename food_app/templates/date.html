@@ -71,7 +71,7 @@ s
   <table class="table table-success container">
     <thead>
       <tr>
-        <th>Select A Date</th>
+        <th>Select Date</th>
         <th>Calories(Kcal)</th>
         <th>Protien(g)</th>
         <th>Carbs(g)</th>
@@ -82,11 +82,12 @@ s
       
       {% for food in foods %}
       <tr class="table-active ">
-        <td><a class="btn btn-warning" href="/single_date/{{food.date}}">{{ food.date }}</a></td>
+        
+        <td><a class="btn btn-warning" href="/single_date/{{food.date}}">{{food.date}}</a></td>
         <td>{{ food.calories }}</td>
         <td>{{ food.protien }}</td>
         <td>{{ food.carbs }}</td>
-        <td><a class="btn btn-danger" href='/user/delete/{{food.id}}'>Delete</a></td>
+        <td><a class="btn btn-danger" href='/group/delete/{{food.date}}'>Delete</a></td>
       </tr>
       {% endfor %}
       

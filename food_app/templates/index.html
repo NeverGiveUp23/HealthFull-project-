@@ -1,175 +1,151 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- BOOTSTRAP -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 
 
-<!-- CSS -->
-<link rel="stylesheet" href="{{url_for('static', filename='main.css')}}">
+  <!-- CSS -->
+  <link rel="stylesheet" href="{{url_for('static', filename='main.css')}}">
 
-<!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Sono:wght@200&display=swap" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Sono:wght@200&display=swap" rel="stylesheet">
 
   <title>HealthFULL</title>
-  
+
 </head>
+
 <body>
 
-
-
-
-  
-<!-- Nav BAR -->
-<div class="container">
-  <nav class="navbar navbar-light-hover-color  bg-success fixed-top">
+  <nav class="navbar navbar-expand-lg bg-success">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#"></a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
+      <a class="navbar-brand" href="/">HealthFull</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="offcanvas offcanvas-end text-bg-light " tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
-        <div class="offcanvas-header">
-          <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">HealthFULL</h5>
-          <button type="button" class="btn-close btn-close-success" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <div id="sideBar" class="offcanvas-body">
-          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
-            </li>
-            {% if 'user_id' in session %}
-            <li class="nav-item">
-              <a class="nav-link btn btn-success" href="/dashboard"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-person-fill" viewBox="0 0 16 16">
-                <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
-              </svg>Profile</a>
-            </li>
-            {% endif %}
-            {% if 'user_id' not in session %}
-            <li class="nav-item dark" id="loginReg">
-              <a class="nav-link active btn btn-success" href="/login/register"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="green" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"/>
-                <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
-              </svg> Login/Register</a>
-            </li>
-            {% endif %}
-            {% if 'user_id' in session %}
-            <li class="nav-item">
-              <a class="nav-link active btn btn-danger" href="/logout"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-box-arrow-left" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z"/>
-                <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/>
-              </svg> Logout</a>
-            </li>
-            {% endif %}
-          </ul>
-        </div>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          {% if 'user_id' in session %}
+          <li class="nav-item">
+            <a class="nav-link" href="/create/goal">Create Goal</a>
+          </li>
+          {% endif %}
+
+          {% if 'user_id' in session %}
+          <li class="nav-item">
+            <a class="nav-link" href="/dashboard">Dashboard</a>
+          </li>
+          {% endif %}
+
+          {% if 'user_id' not in session %}
+          <li class="nav-item">
+            <a class="nav-link" href="/login/register">Login/Register</a>
+          </li>
+          {% endif %}
+
+          {% if 'user_id' in session %}
+          <li class="nav-item">
+            <a class="nav-link" href="/logout">Logout</a>
+          </li>
+          {% endif %}
+        </ul>
       </div>
     </div>
   </nav>
+  </div>
+  <!-- NAVBAR END -->
+  <div id="main">
+    <h1>Welcome To HealthFULL</h1>
 
-</div>
-<!-- NAVBAR END -->
-<div id="main">
-<h1>Welcome To HealthFULL</h1>
+    <img src="{{url_for('static', filename='/img/grocery.png')}}" alt="grocery image">
+    <div>
 
-<img src="{{url_for('static', filename='/img/grocery.png')}}" alt="grocery image">
-<div>
-  
-  <h1 class="text-center alert alert-success">Search Any Food!</h1>
+      <h1 class="text-center alert alert-success">Search Any Food!</h1>
 
-</div>
+    </div>
 
-<!--  main div for the search bars -->
-<div class=" mb-3 col-auto container">
-
+    <!--  main div for the search bars -->
+    <div class=" mb-3 col-auto container">
 
 
-      <input  
-      type="text" 
-      id="foodSearch" 
-      id="autoSizingInputGroup"
-      id="floatingInput"
-      class="form-control" 
-      placeholder=" Enter A Food ">
+
+      <input type="text" id="foodSearch" id="autoSizingInputGroup" id="floatingInput" class="form-control"
+        placeholder=" Enter A Food ">
 
 
     </div>
-    
+
     <div class="mb-3 col-auto container ">
-    
-            <input 
-            name="amount" 
-            type="number" 
-            id="servings"  
-            class="form-control " 
-            aria-label="Sizing example input" 
-            aria-describedby="inputGroup-sizing-sm"
-            placeholder="Serving Amount">
-    
+
+      <input name="amount" type="number" id="servings" class="form-control " aria-label="Sizing example input"
+        aria-describedby="inputGroup-sizing-sm" placeholder="Serving Amount">
+
     </div>
 
 
 
-<!-- button for the search function -->
-<button id="srchBtn" class="btn btn-success" onclick="search()">Search</button>
+    <!-- button for the search function -->
+    <button id="srchBtn" class="btn btn-success" onclick="search()">Search</button>
 
-</div>
-<!-- End of main search heading -->
+  </div>
+  <!-- End of main search heading -->
 
 
-<div  id="text" class="container d-flex justify-content-evenly" >
-  
-  <p class="text-center">Vegatables</p>
-  <p class="text-center">Meats</p>
-  <p class="text-center">Fruits</p>
-  <p class="text-center">Dairy</p>
-</div>
-<p  class="placeholder-glow container text-center">
-  <span id="bar" class="placeholder col-8 bg-success"></span>
-</p>
+  <div id="text" class="container d-flex justify-content-evenly">
+
+    <p class="text-center">Vegatables</p>
+    <p class="text-center">Meats</p>
+    <p class="text-center">Fruits</p>
+    <p class="text-center">Dairy</p>
+  </div>
+  <p class="placeholder-glow container text-center">
+    <span id="bar" class="placeholder col-8 bg-success"></span>
+  </p>
   <section id="mainImgs" class="container">
 
     <div id="veggies" class="d-sm-flex">
-        <img class="img-fluid" alt="vegetable" src="{{url_for('static', filename='/img/veggies.png')}}">
-        <div>
-        </div>
+      <img class="img-fluid" alt="vegetable" src="{{url_for('static', filename='/img/veggies.png')}}">
+      <div>
       </div>
-      <div id="meat" class="d-sm-flex">
-        <img class="img-fluid" alt="meat" src="{{url_for('static', filename='/img/meats.png')}}">
-      </div>
+    </div>
+    <div id="meat" class="d-sm-flex">
+      <img class="img-fluid" alt="meat" src="{{url_for('static', filename='/img/meats.png')}}">
+    </div>
 
 
     <div id="fruits" class="d-sm-flex">
       <img class="img-fluid" alt="fruits" src="{{url_for('static', filename='/img/fruits.png')}}">
     </div>
     <div id="dairy" class="d-sm-flex">
-      <img class="img-fluid"  alt="dairy" src="{{url_for('static', filename='/img/dairy.png')}}">
+      <img class="img-fluid" alt="dairy" src="{{url_for('static', filename='/img/dairy.png')}}">
     </div>
   </section>
 
-  
-  
-  <form action="/save/food" method="post" id="mainTwo" >
-      <div class="container">
-        <input id="food" type="text" name='label' readonly placeholder="Delicious food here!">
 
-      </div>
+  <form action="/save/food" method="post" id="mainTwo">
+    <div class="container">
+      <input id="food" type="text" name='label' readonly placeholder="Delicious food here!">
 
-   <div class="container">
-     <label for="servings">Servings:</label>
-     <input id="amount" type="text" name="servings" readonly placeholder="It's never to much!">
-   </div>
+    </div>
+
+    <div class="container">
+      <label for="servings">Servings:</label>
+      <input id="amount" type="text" name="servings" readonly placeholder="It's never to much!">
+    </div>
 
     <div class="container">
 
       <label for="calories">Calories:</label>
-      <input id="calories" type="text" name='calories'readonly placeholder="It's just a number">
+      <input id="calories" type="text" name='calories' readonly placeholder="It's just a number">
     </div>
-    
+
     <div class="container">
 
       <label for="protien">Protien:</label>
@@ -184,126 +160,160 @@
     </div>
 
     {% if 'user_id' in session%}
-    <input type="date" id="date" name="date" >
+    <input type="date" id="date" name="date">
     <input type="submit" value="Save" class="btn btn-success">
     {% endif %}
   </form>
 
-  <p  class="placeholder-glow container text-center ">
+  <p class="placeholder-glow container text-center ">
     <span id="bar" class="placeholder col-8 bg-success"></span>
   </p>
 
-<div class="container">
+  <div class="container">
 
-  <h2>How many calories should you eat on average per day?</h2>
-  <p>Here’s a closer look at how many calories you should eat, based on recommendations from the U.S. Department of Agriculture’s (USDA’s) 2020–2025 Dietary Guidelines for Americans</p>
+    <h2>How many calories should you eat on average per day?</h2>
+    <p>Here’s a closer look at how many calories you should eat, based on recommendations from the U.S. Department of
+      Agriculture’s (USDA’s) 2020–2025 Dietary Guidelines for Americans</p>
 
-  <div class="table-responsive-sm">
+    <div class="table-responsive-sm">
 
-    <table class="table table-success ">
-      <thead>
-        <tr>
-          <th scope="col">Age</th>
-          <th scope="col">Children(Male)</th>
-          <th scope="col">Children(Female)</th>
-          <th scope="col">Male</th>
-          <th scope="col">Female</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">2-4 years</th>
-          <td >1,000-1,600</td>
-          <td>1,000-1,400</td>
-          <td><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="red" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
-            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
-          </svg></td>
-          <td><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="red" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
-            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
-          </svg></td>
-        </tr>
-        <tr>
-          <th scope="row">5-8 years</th>
-          <td>1,200-2,000</td>
-          <td>1,200-1,800</td>
-          <td><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="red" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
-            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
-          </svg></td>
-          <td><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="red" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
-            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
-          </svg></td>
-        </tr>
-        <tr>
-          <th scope="row">9-13 years</th>
-          <td>1,600-2,600</td>
-          <td>1,400-2,200</td>
-          <td><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="red" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
-            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
-          </svg></td>
-          <td><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="red" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
-            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
-          </svg></td>
-        </tr>
-        <tr>
-          <th scope="row">14-18 years</th>
-          <td>2,000-3,200</td>
-          <td>1,800-2,400</td>
-          <td><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="red" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
-            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
-          </svg></td>
-          <td><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="red" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
-            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
-          </svg></td>
-        </tr>
-        <tr>
-          <th scope="row">19-30 years</th>
-          <td><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="red" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
-            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
-          </svg></td>
-          <td><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="red" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
-            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
-          </svg></td>
-          <td>2,400-3,000</td>
-          <td>2,000-2,400</td>
-        </tr>
-        <tr>
-          <th scope="row">31-59 years</th>
-          <td><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="red" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
-            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
-          </svg></td>
-          <td><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="red" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
-            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
-          </svg></td>
-          <td>2,200-3,000</td>
-          <td>1,800-2,200</td>
-        </tr>
-        <tr>
-          <th scope="row">60+ years</th>
-          <td><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="red" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
-            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
-          </svg></td>
-          <td><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="red" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
-            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
-          </svg></td>
-          <td>2,000-2,600</td>
-          <td>1,600-2,000</td>
-        </tr>
-      </tbody>
-    </table>
+      <table class="table table-success ">
+        <thead>
+          <tr>
+            <th scope="col">Age</th>
+            <th scope="col">Children(Male)</th>
+            <th scope="col">Children(Female)</th>
+            <th scope="col">Male</th>
+            <th scope="col">Female</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">2-4 years</th>
+            <td>1,000-1,600</td>
+            <td>1,000-1,400</td>
+            <td><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="red" class="bi bi-x-circle-fill"
+                viewBox="0 0 16 16">
+                <path
+                  d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z" />
+              </svg></td>
+            <td><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="red" class="bi bi-x-circle-fill"
+                viewBox="0 0 16 16">
+                <path
+                  d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z" />
+              </svg></td>
+          </tr>
+          <tr>
+            <th scope="row">5-8 years</th>
+            <td>1,200-2,000</td>
+            <td>1,200-1,800</td>
+            <td><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="red" class="bi bi-x-circle-fill"
+                viewBox="0 0 16 16">
+                <path
+                  d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z" />
+              </svg></td>
+            <td><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="red" class="bi bi-x-circle-fill"
+                viewBox="0 0 16 16">
+                <path
+                  d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z" />
+              </svg></td>
+          </tr>
+          <tr>
+            <th scope="row">9-13 years</th>
+            <td>1,600-2,600</td>
+            <td>1,400-2,200</td>
+            <td><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="red" class="bi bi-x-circle-fill"
+                viewBox="0 0 16 16">
+                <path
+                  d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z" />
+              </svg></td>
+            <td><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="red" class="bi bi-x-circle-fill"
+                viewBox="0 0 16 16">
+                <path
+                  d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z" />
+              </svg></td>
+          </tr>
+          <tr>
+            <th scope="row">14-18 years</th>
+            <td>2,000-3,200</td>
+            <td>1,800-2,400</td>
+            <td><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="red" class="bi bi-x-circle-fill"
+                viewBox="0 0 16 16">
+                <path
+                  d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z" />
+              </svg></td>
+            <td><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="red" class="bi bi-x-circle-fill"
+                viewBox="0 0 16 16">
+                <path
+                  d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z" />
+              </svg></td>
+          </tr>
+          <tr>
+            <th scope="row">19-30 years</th>
+            <td><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="red" class="bi bi-x-circle-fill"
+                viewBox="0 0 16 16">
+                <path
+                  d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z" />
+              </svg></td>
+            <td><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="red" class="bi bi-x-circle-fill"
+                viewBox="0 0 16 16">
+                <path
+                  d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z" />
+              </svg></td>
+            <td>2,400-3,000</td>
+            <td>2,000-2,400</td>
+          </tr>
+          <tr>
+            <th scope="row">31-59 years</th>
+            <td><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="red" class="bi bi-x-circle-fill"
+                viewBox="0 0 16 16">
+                <path
+                  d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z" />
+              </svg></td>
+            <td><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="red" class="bi bi-x-circle-fill"
+                viewBox="0 0 16 16">
+                <path
+                  d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z" />
+              </svg></td>
+            <td>2,200-3,000</td>
+            <td>1,800-2,200</td>
+          </tr>
+          <tr>
+            <th scope="row">60+ years</th>
+            <td><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="red" class="bi bi-x-circle-fill"
+                viewBox="0 0 16 16">
+                <path
+                  d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z" />
+              </svg></td>
+            <td><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="red" class="bi bi-x-circle-fill"
+                viewBox="0 0 16 16">
+                <path
+                  d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z" />
+              </svg></td>
+            <td>2,000-2,600</td>
+            <td>1,600-2,000</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+
+
+  </div>
+
+  <div id="footer" class="bg-success opacity-75">
+
+    <div id="last" class="">
+      <h1><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-c-circle"
+          viewBox="0 0 16 16">
+          <path
+            d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8Zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0ZM8.146 4.992c-1.212 0-1.927.92-1.927 2.502v1.06c0 1.571.703 2.462 1.927 2.462.979 0 1.641-.586 1.729-1.418h1.295v.093c-.1 1.448-1.354 2.467-3.03 2.467-2.091 0-3.269-1.336-3.269-3.603V7.482c0-2.261 1.201-3.638 3.27-3.638 1.681 0 2.935 1.054 3.029 2.572v.088H9.875c-.088-.879-.768-1.512-1.729-1.512Z" />
+        </svg> HealthFull</h1>
+    </div>
   </div>
 
 
 
-</div>
-
-<div id="footer" class="bg-success opacity-75">
-
-  <div id="last" class="">
-  <h1><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-c-circle" viewBox="0 0 16 16">
-    <path d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8Zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0ZM8.146 4.992c-1.212 0-1.927.92-1.927 2.502v1.06c0 1.571.703 2.462 1.927 2.462.979 0 1.641-.586 1.729-1.418h1.295v.093c-.1 1.448-1.354 2.467-3.03 2.467-2.091 0-3.269-1.336-3.269-3.603V7.482c0-2.261 1.201-3.638 3.27-3.638 1.681 0 2.935 1.054 3.029 2.572v.088H9.875c-.088-.879-.768-1.512-1.729-1.512Z"/>
-  </svg> HealthFull</h1>
-  </div>
-</div>
 
 
 
@@ -315,13 +325,13 @@
 
 
 
+  <!-- BS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+    crossorigin="anonymous"></script>
 
-
-
-<!-- BS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-
-<!-- JS -->
+  <!-- JS -->
   <script src="{{url_for('static', filename='script.js')}}"></script>
 </body>
+
 </html>
