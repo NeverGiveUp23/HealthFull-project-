@@ -20,6 +20,8 @@
 -->
 
 [![LinkedIn][linkedin-shield]][linkedin-url]
+[![stars][stars-shield]][stars-url]
+[![issues][issues-shield]][issues-url]
 
 
 
@@ -66,11 +68,7 @@
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
 </details>
 
@@ -81,16 +79,10 @@
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-There are many great README templates available on GitHub; however, I didn't find one that really suited my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
+This is a Python/Flask application using an API call Edemam and Chart.Js to present visually appealing data for the user. This was a solo project using a Trello board for task organization
 
-Here's why:
-* Your time should be focused on creating something amazing. A project that solves a problem and helps others
-* You shouldn't be doing the same tasks over and over like creating a README from scratch
-* You should implement DRY principles to the rest of your life :smile:
+This project was inspired for my family members to track their calories per day/week/month. They can search and save specific food that they have consumed throughout the day while also creating a goal for them to keep track of. I'm very passionate about this project as I get to help them visually see their intake and visual goals.
 
-Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue. Thanks to all the people have contributed to expanding this template!
-
-Use the `BLANK_README.md` to get started.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -100,14 +92,13 @@ Use the `BLANK_README.md` to get started.
 
 This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
 
-* [![Next][Next.js]][Next-url]
-* [![React][React.js]][React-url]
-* [![Vue][Vue.js]][Vue-url]
-* [![Angular][Angular.io]][Angular-url]
-* [![Svelte][Svelte.dev]][Svelte-url]
-* [![Laravel][Laravel.com]][Laravel-url]
+* ![Next][Next.js]
+* ![React][React.js]
+* ![Vue][Vue.js]
+* ![Laravel][Laravel.com]
 * [![Bootstrap][Bootstrap.com]][Bootstrap-url]
-* [![JQuery][JQuery.com]][JQuery-url]
+* ![JQuery][JQuery.com]
+* ![MySQL.com][MySQL.com]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -119,32 +110,24 @@ This section should list any major frameworks/libraries used to bootstrap your p
 This is an example of how you may give instructions on setting up your project locally.
 To get a local copy up and running follow these simple example steps.
 
-### Prerequisites
-
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
 
 ### Installation
 
 _Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
 
-1. Get a free API Key at [https://example.com](https://example.com)
+1. Get a free API Key at [https://www.edamam.com](https://www.edamam.com)
 2. Clone the repo
    ```sh
-   git clone https://github.com/your_username_/Project-Name.git
+   git clone https://github.com/your_username_/HealthFull-project-.git
    ```
-3. Install NPM packages
+3. Install packages
    ```sh
-   npm install
+   pipenv install flask pymysql flask-bycript
    ```
-4. Enter your API in `config.js`
+4. Enter your API in `script.js`
    ```js
    const API_KEY = 'ENTER YOUR API';
    ```
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
@@ -152,82 +135,58 @@ _Below is an example of how you can instruct your audience on installing and set
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+Once logged in a user can search any food along with the serving amount that they've eaten throughout the day and save it. A list of calories, protien, and carbs will display.
+
+A user can only save food if they create an account, the date calender will not appear if the user is not logged in.
+
+[![Product Name Screen Shot][product-screenshot2]](https://example.com)
+
+
+Once the user has saved the meal per specific date, they will be redirected to their dashboard which will display all of their meals with each catogory totaled. I used Chart.js to display visually appealing data for the user. 
+
+The graph on the right is displaying data of saved food totaled up by specific month, the user can use this information to compare their calories month to month.
+
+The Doughnut Chart on the left is to display the information that is in the table but in a more user friendly way. The user can toggle a catogory in the chart and view it specifically. 
+
+
+[![Product Name Screen Shot][product-screenshot3]](https://example.com)
+
+
+As the user clicks on "View Meals By Date" on the dashboard page, they will come here a view their meals totaled by the date. I added this page to organize the data for the user. A delete button was made for the user if they felt like there was a mistake with some meals on that specific date.
+
+The next page was very fun for me to make.
+
+
+[![Product Name Screen Shot][product-screenshot4]](https://example.com)
+
+
+I decided to add a feature where a user can input goals for the day to keep them on track. I first had issues accessing the page if a user did not have a goal input, I had to involve a bit of logic to allow the user access. 
+
+Now if the use doesn't have any goal input, they will be able to see and emput chart and the three categories at 0. A button will display that says "Create A Goal".
+
+*I added little notes for the user, which i will so make for the user to unput their own notes.*
+
+Also, a table will show of all the meals per that day, along with a delete button.
+
+
+[![Product Name Screen Shot][product-screenshot5]](https://example.com)
+
+
+Once the user has inputted their goal for the day, the page will display their goal, current calorie count, and remaining calories. This will adjust as the user inputs more meals per that date as well as deleting data. I also put in a chart for a more visual appeal.
+
+
+[![Product Name Screen Shot][product-screenshot6]](https://example.com)
+
 
 _For more examples, please refer to the [Documentation](https://example.com)_
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
-
-<!-- ROADMAP -->
-## Roadmap
-
-- [x] Add Changelog
-- [x] Add back to top links
-- [ ] Add Additional Templates w/ Examples
-- [ ] Add "components" document to easily copy & paste sections of the readme
-- [ ] Multi-language Support
-    - [ ] Chinese
-    - [ ] Spanish
-
-See the [open issues](https://github.com/othneildrew/Best-README-Template/issues) for a full list of proposed features (and known issues).
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- CONTRIBUTING -->
-## Contributing
-
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
-Don't forget to give the project a star! Thanks again!
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- LICENSE -->
-## License
-
-Distributed under the MIT License. See `LICENSE.txt` for more information.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
-
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- ACKNOWLEDGMENTS -->
-## Acknowledgments
-
-Use this space to list resources you find helpful and would like to give credit to. I've included a few of my favorites to kick things off!
-
-* [Choose an Open Source License](https://choosealicense.com)
-* [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
-* [Malven's Flexbox Cheatsheet](https://flexbox.malven.co/)
-* [Malven's Grid Cheatsheet](https://grid.malven.co/)
-* [Img Shields](https://shields.io)
-* [GitHub Pages](https://pages.github.com)
-* [Font Awesome](https://fontawesome.com)
-* [React Icons](https://react-icons.github.io/react-icons/search)
+Via Email - felixvjr0@gmail.com
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -239,26 +198,23 @@ Use this space to list resources you find helpful and would like to give credit 
 [contributors-url]: https://github.com/othneildrew/Best-README-Template/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/othneildrew/Best-README-Template.svg?style=for-the-badge
 [forks-url]:https://github.com/NeverGiveUp23/HealthFull-project-/network/members
-[stars-shield]: https://img.shields.io/github/stars/othneildrew/Best-README-Template.svg?style=for-the-badge
+[stars-shield]: https://img.shields.io/github/stars/NeverGiveUp23/HealthFull-project-.svg
 [stars-url]: https://github.com/NeverGiveUp23/HealthFull-project-/stargazers
-[issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=for-the-badge
+[issues-shield]: https://img.shields.io/github/issues/NeverGiveUp23/HealthFull-project-.svg
 [issues-url]: https://github.com/NeverGiveUp23/HealthFull-project-issues
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/felixvargasjr/
-[product-screenshot]: food_app/static/img/Main Dashboard.png
-[Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
-[Next-url]: https://nextjs.org/
-[React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
-[React-url]: https://reactjs.org/
-[Vue.js]: https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vuedotjs&logoColor=4FC08D
-[Vue-url]: https://vuejs.org/
-[Angular.io]: https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white
-[Angular-url]: https://angular.io/
-[Svelte.dev]: https://img.shields.io/badge/Svelte-4A4A55?style=for-the-badge&logo=svelte&logoColor=FF3E00
-[Svelte-url]: https://svelte.dev/
-[Laravel.com]: https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white
-[Laravel-url]: https://laravel.com
+[product-screenshot]: food_app/static/img/Mainpage.png
+[product-screenshot2]: food_app/static/img/Mainpageaddingfood.png
+[product-screenshot3]: food_app/static/img/mainDashboard.png
+[product-screenshot4]: food_app/static/img/Dailytotals.png
+[product-screenshot5]: food_app/static/img/Beforegoalinputpage.png
+[product-screenshot6]: food_app/static/img/GoalResultPage.png
+[Next.js]: https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white
+[React.js]: https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white
+[Vue.js]: https://img.shields.io/badge/Python-14354C?style=for-the-badge&logo=python&logoColor=white
+[Laravel.com]:https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white
 [Bootstrap.com]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
 [Bootstrap-url]: https://getbootstrap.com
-[JQuery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
-[JQuery-url]: https://jquery.com 
+[JQuery.com]: https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black
+[mySQL.com]: https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white
