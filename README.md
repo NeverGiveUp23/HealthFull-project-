@@ -37,14 +37,6 @@
   <p align="center">
     Food and Calorie Tracker
     <br />
-    <a href="https://github.com/NeverGiveUp23/HealthFull-project-"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
-    <a href="https://github.com/othneildrew/Best-README-Template">View Demo</a>
-    ·
-    <a href="https://github.com/NeverGiveUp23/HealthFull-project-/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/NeverGiveUp23/HealthFull-project-/issues">Request Feature</a>
   </p>
 </div>
 
